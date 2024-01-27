@@ -9,7 +9,7 @@ elseif minetest.get_modpath("mcl_core") and minetest.get_modpath("mcl_dye") and
 else
     error(
         '\n' ..
-        'GGraffiti\n' ..
+        'Petroglyph Maker\n' ..
         "────────────────────────────────────────────────────────────────────────────────────────────────────\n" ..
         'No supported game found. Supported games are:\n' ..
         ' - Minetest Game\n' ..
@@ -22,7 +22,7 @@ end
 local function dependency_version_error(mod_title)
     error(
         '\n' ..
-        'GGraffiti\n' ..
+        'Petroglyph Maker\n' ..
         "────────────────────────────────────────────────────────────────────────────────────────────────────\n" ..
         'You have an outdated version of the mod "' .. mod_title .. '" installed. ' ..
         'Please go to "Content" → "Browse online content" and update the mod "' .. mod_title .. '".\n' ..
@@ -53,7 +53,7 @@ shared.EPSILON = 0.0001
 
 if shared.game == "mtg" then
     -- Creative inventory concept:
-    -- All spray cans: "Tools"
+    -- All stone chisels: "Tools"
     -- Red mushroom extract: "Items"
 
     shared.game_items = {
@@ -88,7 +88,7 @@ if shared.game == "mtg" then
     }
 elseif shared.game == "mcl" then
     -- Creative inventory concept:
-    -- All spray cans: "Miscellaneous"
+    -- All stone chisels: "Miscellaneous"
     -- Red mushroom extract: "Materials"
 
     shared.game_items = {
@@ -125,7 +125,7 @@ else
     error("Something is rotten in the state of Denmark.")
 end
 
-local basepath = minetest.get_modpath("ggraffiti") .. "/src"
+local basepath = minetest.get_modpath("petroglyph_maker") .. "/src"
 assert(loadfile(basepath .. "/aabb.lua"))(shared)
 assert(loadfile(basepath .. "/canvas.lua"))(shared)
 assert(loadfile(basepath .. "/spraycast.lua"))(shared)

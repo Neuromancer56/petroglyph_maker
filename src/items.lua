@@ -1,5 +1,5 @@
 local shared = ...
-local S = minetest.get_translator("ggraffiti")
+local S = minetest.get_translator("petroglyph_maker")
 
 local function get_eye_pos(player)
     local pos = player:get_pos()
@@ -15,7 +15,7 @@ local function wear_out(player_name, item, n_steps, size)
     item:add_wear_by_uses(shared.SPRAY_DURATION / shared.SPRAY_STEP_INTERVAL *
             shared.NUM_SPRAY_STEPS / n_steps / (size * size))
     if item:is_empty() then
-        return ItemStack("ggraffiti:spray_can_empty")
+        return ItemStack("petroglyph_maker:broken_chisel")
     end
     return item
 end
@@ -72,8 +72,8 @@ local function spray_can_on_place(item, player)
     shared.gui_show_configure(player, item, meta)
 end
 
-minetest.register_craftitem("ggraffiti:spray_can_empty", { -- stackable
-    description = S("Empty Spray Can"),
+minetest.register_craftitem("petroglyph_maker:broken_chisel", { -- stackable
+    description = S("Broken Chisel"),
     inventory_image = "ggraffiti_spray_can.png",
 
     range = shared.MAX_SPRAY_DISTANCE,
@@ -87,11 +87,11 @@ function shared.get_colored_can_texmod(color)
 end
 
 for _, dye in ipairs(shared.game_dyes) do
-    local item_name = "ggraffiti:spray_can_" .. dye.name
+    local item_name = "petroglyph_maker:stone_chisel_" .. dye.name
 
     minetest.register_tool(item_name, {
-        description = S("Graffiti Spray Can (" .. dye.desc .. ")") .. "\n" ..
-            S("Left-click to spray, right-click to configure.") .. "\n\n" ..
+        description = S("Stone Chisel (" .. dye.desc .. ")") .. "\n" ..
+            S("Left-click to chisel, right-click to configure.") .. "\n\n" ..
             S("Size: @1", 1),
         inventory_image = shared.get_colored_can_texmod(dye.color),
 
@@ -116,9 +116,9 @@ for _, dye in ipairs(shared.game_dyes) do
     })
 end
 
-minetest.register_tool("ggraffiti:spray_can_rgb", {
-    description = S("RGB Graffiti Spray Can") .. "\n" ..
-        S("Left-click to spray, right-click to configure.") .. "\n\n" ..
+minetest.register_tool("petroglyph_maker:stone_chisel_rgb", {
+    description = S("RGB Stone Chisel") .. "\n" ..
+        S("Left-click to chisel, right-click to configure.") .. "\n\n" ..
         S("No color set.") .. "\n" ..
         S("Size: @1", 1),
     inventory_image = "ggraffiti_spray_can_rgb.png",
@@ -140,10 +140,10 @@ minetest.register_craft({
         { "default:flint", "default:flint",  "default:flint" },
         { "",                        "default:cobble", ""                         },
     },
-    output = "ggraffiti:spray_can_rgb",
+    output = "petroglyph_maker:stone_chisel_rgb",
 })
 
-minetest.register_craftitem("ggraffiti:mushroom_red_extract", {
+minetest.register_craftitem("petroglyph_maker:mushroom_red_extract", {
     description = S("Red Mushroom Extract"),
     inventory_image = "ggraffiti_mushroom_red_extract.png",
     groups = { craftitem = shared.game == "mcl" and 1 or nil },
@@ -151,12 +151,12 @@ minetest.register_craftitem("ggraffiti:mushroom_red_extract", {
 
 minetest.register_craft({
     recipe = {{ shared.game_items.red_mushroom }},
-    output = "ggraffiti:mushroom_red_extract " .. shared.game_items.red_mushroom_extract_count,
+    output = "petroglyph_maker:mushroom_red_extract " .. shared.game_items.red_mushroom_extract_count,
 })
 
-minetest.register_tool("ggraffiti:spray_can_remover", {
-    description = S("Graffiti Remover Spray Can") .. "\n" ..
-        S("Left-click to spray, right-click to configure.") .. "\n\n" ..
+minetest.register_tool("petroglyph_maker:stone_chisel_remover", {
+    description = S("Stone Chisel Remover") .. "\n" ..
+        S("Left-click to chisel, right-click to configure.") .. "\n\n" ..
         S("Size: @1", 1),
     inventory_image = "ggraffiti_spray_can_remover.png",
 
@@ -171,7 +171,7 @@ minetest.register_tool("ggraffiti:spray_can_remover", {
     groups = { ggraffiti_spray_can = 1 },
 })
 
-minetest.register_alias("ggraffiti:spray_can_anti", "ggraffiti:spray_can_remover")
+minetest.register_alias("petroglyph_maker:stone_chisel_anti", "petroglyph_maker:stone_chisel_remover")
 
 minetest.register_craft({
     recipe = {
@@ -179,7 +179,7 @@ minetest.register_craft({
         {  "default:flint" },
         {shared.game_items.iron_ingot	     },
     },
-    output = "ggraffiti:spray_can_remover",
+    output = "petroglyph_maker:stone_chisel_remover",
 })
 
 minetest.register_craft({
@@ -273,7 +273,7 @@ minetest.register_globalstep(function(dtime)
         --         avg = avg + v
         --     end
         --     avg = avg / #deltas
-        --     print(string.format("[ggraffiti] average spray step time: %.6f ms", avg))
+        --     print(string.format("[petroglyph_maker] average spray step time: %.6f ms", avg))
         -- end
     end
 end)

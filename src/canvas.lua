@@ -54,7 +54,7 @@ function CanvasEntity:on_activate(staticdata)
             local p = self.object:get_pos():to_string()
             self.object:remove()
             minetest.log("warning",
-                "Removed ggraffiti:canvas entity at " .. p .. " in on_activate because of invalid staticdata")
+                "Removed petroglyph_maker:canvas entity at " .. p .. " in on_activate because of invalid staticdata")
             return
         end
 
@@ -75,7 +75,7 @@ function CanvasEntity:on_activate(staticdata)
         for _, obj in ipairs(rivals) do
             if obj ~= self.object then
                 local ent = obj:get_luaentity()
-                if ent and ent.name == "ggraffiti:canvas" then
+                if ent and ent.name == "petroglyph_maker:canvas" then
                     obj:remove()
                 end
             end
@@ -175,7 +175,7 @@ function CanvasEntity:get_node_pos()
     return (self.object:get_pos() + self.node_offset):round()
 end
 
-minetest.register_entity("ggraffiti:canvas", CanvasEntity)
+minetest.register_entity("petroglyph_maker:canvas", CanvasEntity)
 
 function shared.update_canvases()
     for _, canvas in ipairs(canvas_update_queue) do
@@ -196,7 +196,7 @@ minetest.register_on_dignode(function(pos)
     )
     for _, obj in ipairs(objs) do
         local ent = obj:get_luaentity()
-        if ent and ent.name == "ggraffiti:canvas" then
+        if ent and ent.name == "petroglyph_maker:canvas" then
             local node_pos = ent:get_node_pos()
             if pos == node_pos then
                 obj:remove()

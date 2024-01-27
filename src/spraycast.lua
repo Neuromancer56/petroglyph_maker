@@ -87,14 +87,14 @@ local function find_canvas(pos)
 
     for _, obj in ipairs(findings) do
         local ent = obj:get_luaentity()
-        if ent and ent.name == "ggraffiti:canvas" then
+        if ent and ent.name == "petroglyph_maker:canvas" then
             return ent
         end
     end
 end
 
 local function create_canvas(node_pos, pos, rot, size, bitmap_size)
-    local obj = minetest.add_entity(pos, "ggraffiti:canvas")
+    local obj = minetest.add_entity(pos, "petroglyph_maker:canvas")
     if not obj then return end
     obj:set_rotation(rot)
 

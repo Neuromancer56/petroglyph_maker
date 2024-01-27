@@ -1,6 +1,6 @@
 local shared = ...
 local gui = flow.widgets
-local S = minetest.get_translator("ggraffiti")
+local S = minetest.get_translator("petroglyph_maker")
 
 local FORMSPEC_MIN_WIDTH = 7
 -- named as in the Minetest Modding Book
@@ -21,7 +21,7 @@ end
 
 function shared.get_raw_spray_def(item)
     local def = item:get_definition()
-    return def and def._ggraffiti_spray_can
+    return def and def._ggraffiti_spray_can   ------*************************
 end
 
 function shared.meta_get_size(meta)
@@ -44,7 +44,7 @@ local function update_item_meta(item, meta)
 
         meta:set_string("description",
             item:get_short_description() .. "\n" ..
-            S("Left-click to spray, right-click to configure.") .. "\n\n" ..
+            S("Left-click to chisel, right-click to configure.") .. "\n\n" ..
             S("Color: ") .. color_block .. S(" @1, @2, @3", color.r, color.g, color.b) .. "\n" ..
             S("Size: @1", size)
         )
@@ -53,7 +53,7 @@ local function update_item_meta(item, meta)
     else
         meta:set_string("description",
             item:get_short_description() .. "\n" ..
-            S("Left-click to spray, right-click to configure.") .. "\n\n" ..
+            S("Left-click to chisel, right-click to configure.") .. "\n\n" ..
             S("Size: @1", size)
         )
     end

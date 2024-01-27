@@ -120,6 +120,9 @@ function displayTableItems(table)
 end
 ----*****
 
+
+
+
 function shared.spraycast(player, pos, dir, def)
     local ray = minetest.raycast(pos, pos + dir * shared.MAX_SPRAY_DISTANCE, true, false)
     local pthing
@@ -143,7 +146,56 @@ function shared.spraycast(player, pos, dir, def)
 		return 
 	end
 	if math.random() < 0.5 then
-    minetest.sound_play("chisel1", {gain = 0.3})
+ 
+	--if minetest.localplayer and minetest.localplayer.get_player_control().LMB then
+        -- Get the current position of the player's crosshair
+        --local pos = minetest.localplayer.get_ray_position(100)
+		---local pos = player.get_ray_position(100)
+		--local pos = pthing_pos
+		--local pos = player:getpos()
+		local playerpos = player:get_pos()
+local look_dir = player:get_look_dir()
+local distance = 1
+local pos = {x=playerpos.x+(look_dir.x*distance),y=playerpos.y+(look_dir.y*distance)+1.5,z=playerpos.z+(look_dir.z*distance)}
+        
+        -- Spawn particles at the position of the crosshair
+        minetest.add_particlespawner({
+            amount = 1,  -- Number of particles to spawn
+            time = 0.1,   -- Interval between spawns
+            minpos = pos, -- Position to spawn particles
+            maxpos = pos, -- Position to spawn particles
+            minvel = {x = -1, y = 3, z = -1}, -- Minimum velocity of particles
+            maxvel = {x = 1, y = 6, z = 1},    -- Maximum velocity of particles
+            minacc = {x = 0, y = -9, z = 0},    -- Minimum acceleration of particles
+            maxacc = {x = 0, y = -9, z = 0},    -- Maximum acceleration of particles
+            minexptime = 1, -- Minimum expiration time of particles (in seconds)
+            maxexptime = 2, -- Maximum expiration time of particles (in seconds)
+            minsize = 2,    -- Minimum size of particles
+            maxsize = 4,    -- Maximum size of particles
+            collisiondetection = true, -- Enable collision detection with nodes
+            collision_removal = true,  -- Remove particles when they collide with nodes
+            vertical = true,           -- Enable vertical particles
+            texture = "stone_chips.png", -- Texture of particles
+        })
+		 	--[[minetest.add_particlespawner({
+                      		amount = 100,
+                      		time = 0.25,
+                      		minpos = {x=pos.x, y=pos.y+0.3, z=pos.z},
+                      		maxpos = {x=pos.x, y=pos.y+2, z=pos.z},
+                      		minvel = {x = 1,  y = -6,  z = 1},
+                      		maxvel = {x = -1, y = -1, z = -1},
+                      		minacc = {x = 0, y = -2, z = 0},
+                      		maxacc = {x = 0, y = -6, z = 0},
+                      		minexptime = 0.1,
+                      		maxexptime = 1,
+                      		minsize = 0.5,
+                      		maxsize = 1.5,
+                      		texture = "ggraffiti_mushroom_red_extract.png",
+                      		glow = 15,
+                      })]]
+    --end
+	   minetest.sound_play("chisel1", {gain = 0.3})
+	
 	end
     local node_pos = pthing.under
     local player_name = player:get_player_name()

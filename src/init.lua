@@ -82,9 +82,13 @@ if shared.game == "mtg" then
         { item_name = "dye:red", name = "red", desc = "Red", color = "#c91818" },
         { item_name = "dye:magenta", name = "magenta", desc = "Magenta", color = "#d80481" },
         { item_name = "dye:pink", name = "pink", desc = "Pink", color = "#ffa5a5" },]]
-		{ item_name = "dye:orange", name = "orange", desc = "Light", color = "#e6a46a" },
-		{ item_name = "dye:brown", name = "brown", desc = "Dark", color = "#c2875a" },
-		e6a46a
+		{ item_name = "dye:orange", name = "orange", desc = "Light", color = "#e6a46a" }, --230, 164, 106  too light
+		{ item_name = "dye:brown", name = "brown", desc = "Medium", color = "#c2875a" },    -- 194,135,90
+		{ item_name = "dye:black", name = "black", desc = "Dark", color = "#9d7050" },  --157, 112, 80  too dark
+		--{ item_name = "dye:orange", name = "orange", desc = "Light", color = "#9d7050" },  --157, 112, 80  too dark
+		--{ item_name = "dye:brown", name = "brown", desc = "Dark", color = "#845c43" },  --132,92,67
+		--{ item_name = "dye:orange", name = "orange", desc = "Light", color = "#c2875a" },  
+		--{ item_name = "dye:brown", name = "brown", desc = "Dark", color = "#9d7050" },  
     }
 elseif shared.game == "mcl" then
     -- Creative inventory concept:
@@ -119,7 +123,8 @@ elseif shared.game == "mcl" then
         { item_name = "mcl_dye:magenta", name = "magenta", desc = "Magenta", color = "#a06bad" },
         { item_name = "mcl_dye:pink", name = "pink", desc = "Pink", color = "#e07dc1" },]]
 		{ item_name = "mcl_dye:orange", name = "orange", desc = "Light", color = "#e6a46a" },
-		{ item_name = "mcl_dye:brown", name = "brown", desc = "Dark", color = "#c2875a" },
+		{ item_name = "mcl_dye:brown", name = "brown", desc = "Medium", color = "#c2875a" },
+		{ item_name = "mcl_dye:black", name = "black", desc = "Dark", color = "#9d7050" },
     }
 else
     error("Something is rotten in the state of Denmark.")

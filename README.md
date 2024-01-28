@@ -9,7 +9,7 @@ Features:
 - Chisel pixel-by-pixel on desert stone
 - Chisel with custom colors using the RGB chisel
 - Different sizes: Chisel up to 3×3 pixels at a time
-- Remove chisel marks with the eraser-like "remover" chisel or by digging the sprayed nodes
+- Remove chisel marks with the eraser-like "remover" chisel or by digging the chiseled nodes
 - Respects protection mods
 - Compatible with Minetest Game and MineClone 2?
 

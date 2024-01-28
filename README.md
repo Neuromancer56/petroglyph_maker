@@ -42,7 +42,7 @@ If you want to remove a lot of petroglyph at once, you can simply dig the affect
 
 ## License
 © 2024 Neuromancer
-© 2022 Gregor Parzefall
+based on GGraffiti Mod by © 2022 Gregor Parzefall
 
 Source code (everything except image and audio files) available under the [GNU AGPL version 3.0](https://www.gnu.org/licenses/agpl-3.0.html) or any later version, media (image and audio files) available under the [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
